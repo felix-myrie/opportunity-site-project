@@ -15,7 +15,7 @@
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Northstar home">
         <span class="brand-mark">✦</span>
-        <span>northstar<span class="brand-dot">.</span></span>
+        <span>starlet<span class="brand-dot">.</span></span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#generator">Generator</a>
@@ -53,82 +53,68 @@
 
       <section class="ticker" aria-label="Northstar principles">
         <div class="ticker-track">
-          <span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span>
+          <div class="ticker-group"><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span></div><div class="ticker-group" aria-hidden="true"><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span></div>
         </div>
       </section>
 
+      <section class="signals-section" id="signals" aria-labelledby="signals-title">
+        <div class="section-marker">/ 01 — live signals</div>
+        <div class="signals-heading"><h2 id="signals-title">A few places<br />to <span>begin.</span></h2><p>Real opportunities, selected for people who are still figuring it out.</p></div>
+        <div class="opportunity-controls">
+          <label class="search-field" for="opportunity-search"><span>Search</span><input id="opportunity-search" type="search" placeholder="Search titles, organisations, or topics" /></label>
+          <label class="sort-field" for="deadline-sort"><span>Sort by</span><select id="deadline-sort"><option value="soonest">Soonest deadline</option><option value="latest">Latest deadline</option></select></label>
+        </div>
+        <div class="filter-row" role="group" aria-label="Filter opportunities by subject">
+          <button class="filter-button is-active" data-filter-group="subject" data-filter="all">All signals</button><button class="filter-button" data-filter-group="subject" data-filter="tech">Tech + code</button><button class="filter-button" data-filter-group="subject" data-filter="creative">Creative</button><button class="filter-button" data-filter-group="subject" data-filter="community">Community</button><button class="filter-button" data-filter-group="subject" data-filter="science">Science</button><button class="filter-button" data-filter-group="subject" data-filter="business">Business</button>
+        </div>
+        <div class="filter-row filter-row-secondary" role="group" aria-label="Audience filters">
+          <button class="filter-button is-active" data-filter-group="audience" data-filter="all">Any audience</button><button class="filter-button" data-filter-group="audience" data-filter="selective">Selective</button><button class="filter-button" data-filter-group="audience" data-filter="open">Open to all high-schoolers</button>
+        </div>
+        <div class="filter-row filter-row-secondary" role="group" aria-label="Location filters">
+          <button class="filter-button is-active" data-filter-group="region" data-filter="all">Any location</button><button class="filter-button" data-filter-group="region" data-filter="us">US-only</button><button class="filter-button" data-filter-group="region" data-filter="uk">UK-only</button><button class="filter-button" data-filter-group="region" data-filter="global">Global</button>
+        </div>
+        <div class="opportunity-grid" id="opportunity-grid"></div>
+        <div class="signals-footer"><span>Showing <strong id="visible-count">06</strong> of 24 signals</span><span class="footer-line"></span><span>Updated for 2025</span></div>
+      </section>
+
       <section class="generator-section" id="generator" aria-labelledby="generator-title">
-        <div class="section-marker">/ 01 — the generator</div>
+        <div class="section-marker">/ 02 — submit an opportunity</div>
         <div class="generator-heading">
-          <h2 id="generator-title">Start with a<br /><span>signal.</span></h2>
+          <h2 id="generator-title">Send us an<br /><span>opportunity.</span></h2>
           <div>
-            <p>Tell us what pulls at your attention. We’ll surface a few places to put it to work.</p>
+            <p>Know a project, program, or community worth sharing? Tell us about it and help someone make their next move.</p>
             <p id="csv-status" class="csv-status">Loading signals from opportunities.csv</p>
           </div>
         </div>
         <div class="generator-layout">
-          <form class="generator-form" id="generator-form">
+          <form class="generator-form" id="submission-form" data-endpoint="">
             <div class="form-step">
               <span class="step-number">01</span>
               <div class="step-content">
-                <label for="interest">I want to explore</label>
-                <select id="interest" name="interest">
-                  <option value="all">a little bit of everything</option>
-                  <option value="tech">technology & code</option>
-                  <option value="creative">art, media & design</option>
-                  <option value="community">community & change</option>
-                  <option value="science">science & discovery</option>
-                  <option value="business">business & ideas</option>
-                </select>
+                <label for="submission-name">Opportunity name</label>
+                <input id="submission-name" name="name" type="text" maxlength="120" required placeholder="What is it called?" />
               </div>
             </div>
             <div class="form-step">
               <span class="step-number">02</span>
               <div class="step-content">
-                <label for="time">I have</label>
-                <select id="time" name="time">
-                  <option value="any">some time to make it happen</option>
-                  <option value="weekend">a weekend</option>
-                  <option value="month">a month or two</option>
-                  <option value="summer">my whole summer</option>
-                </select>
+                <label for="submission-description">Description</label>
+                <textarea id="submission-description" name="description" maxlength="2000" required placeholder="What should curious people know?"></textarea>
               </div>
             </div>
-            <div class="form-step">
-              <span class="step-number">03</span>
-              <div class="step-content">
-                <label for="mode">I’d rather</label>
-                <select id="mode" name="mode">
-                  <option value="any">surprise myself</option>
-                  <option value="online">work online</option>
-                  <option value="local">stay close to home</option>
-                  <option value="people">meet new people</option>
-                </select>
-              </div>
-            </div>
-            <button class="button button-dark" type="submit">Generate my signals <span>✦</span></button>
-            <p class="form-note">No account. No inbox ambushes. Just a useful place to start.</p>
+            <button class="button button-dark" type="submit">Submit opportunity <span>↗</span></button>
+            <p class="form-note" id="submission-status" aria-live="polite">We’ll review it before it becomes a signal.</p>
           </form>
           <div class="generator-output" id="generator-output" aria-live="polite">
-            <div class="output-topline"><span>your signal mix</span><span id="result-count">06 / 24</span></div>
+            <div class="output-topline"><span>your signal matters</span><span>01 / 01</span></div>
             <div class="output-content">
-              <div class="output-orbit"><span>GO<br />MAKE<br />A THING</span></div>
-              <p class="output-message">Good things happen when curiosity gets a deadline.</p>
-              <p class="output-caption" id="output-caption">Here are six places to begin. Pick the one that makes you a little nervous.</p>
+              <div class="output-orbit"><span>HELP<br />SOMEONE<br />BEGIN</span></div>
+              <p class="output-message">A good opportunity starts with a generous signal.</p>
+              <p class="output-caption">Share the details that would help someone decide whether it is for them.</p>
             </div>
             <div class="output-arrow">↓</div>
           </div>
         </div>
-      </section>
-
-      <section class="signals-section" id="signals" aria-labelledby="signals-title">
-        <div class="section-marker">/ 02 — live signals</div>
-        <div class="signals-heading"><h2 id="signals-title">A few places<br />to <span>begin.</span></h2><p>Real opportunities, selected for people who are still figuring it out.</p></div>
-        <div class="filter-row" role="group" aria-label="Filter opportunities">
-          <button class="filter-button is-active" data-filter="all">All signals</button><button class="filter-button" data-filter="tech">Tech + code</button><button class="filter-button" data-filter="creative">Creative</button><button class="filter-button" data-filter="community">Community</button>
-        </div>
-        <div class="opportunity-grid" id="opportunity-grid"></div>
-        <div class="signals-footer"><span>Showing <strong id="visible-count">06</strong> of 24 signals</span><span class="footer-line"></span><span>Updated for 2025</span></div>
       </section>
 
       <section class="about-section" id="about">
@@ -137,7 +123,7 @@
       </section>
     </main>
 
-    <footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">✦</span><span>northstar<span class="brand-dot">.</span></span></a><span class="footer-note">Made for the beautifully undecided.</span><span class="footer-year">© 2025</span></footer>
+    <footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">✦</span><span>starlet<span class="brand-dot">.</span></span></a><span class="footer-note">Made for the beautifully undecided.</span><span class="footer-year">© 2025</span></footer>
     <script src="script.js"></script>
   </body>
 </html>

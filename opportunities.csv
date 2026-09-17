@@ -1,9 +1,9 @@
-title,org,type,tag,time,mode
-Build a tiny app,CodeDay Labs,tech,Make,1 weekend,Online
-The climate zine,Good Energy Project,creative,Publish,2 weeks,Anywhere
-Youth policy lab,Civic Futures,community,Shape,6 weeks,Online
-Ask a scientist,Field Notes,science,Discover,1 afternoon,Online
-Start a micro-fund,Common Cents,business,Launch,1 month,Local
-Open source summer,GitHub Education,tech,Contribute,All summer,Online
-Street studio,Public Works,creative,Observe,1 weekend,Local
-Neighbourhood atlas,Map the Change,community,Connect,3 weeks,Local
+title,org,type,tag,time,mode,description,audience,region,deadline,url
+Build a tiny app,CodeDay Labs,tech,Make,1 weekend,Online,"Learn by building a small app with mentors and a friendly community of student makers.",Open to all high-schoolers,Global,2026-10-10,https://www.codeday.org/
+The climate zine,Good Energy Project,creative,Publish,2 weeks,Anywhere,"Turn your climate questions into a collaborative zine with young writers artists and editors.",Open to all high-schoolers,UK-only,2026-10-24,https://www.goodenergy.org.uk/
+Youth policy lab,Civic Futures,community,Shape,6 weeks,Online,"Work with other young people to research an issue and turn your ideas into practical policy.",Selective,US-only,2026-11-06,https://www.civicfutures.org.uk/
+Ask a scientist,Field Notes,science,Discover,1 afternoon,Online,"Bring your biggest science question to a live conversation and learn how researchers think.",Open to all high-schoolers,Global,,https://www.sciencebuddies.org/
+Start a micro-fund,Common Cents,business,Launch,1 month,Local,"Shape a small community project build a simple budget and pitch for starter funding.",Selective,US-only,2026-12-01,https://www.commoncents.org/
+Open source summer,GitHub Education,tech,Contribute,All summer,Online,"Make your first contribution to open source and develop practical skills alongside a global community.",Open to all high-schoolers,Global,2027-03-15,https://education.github.com/pack
+Street studio,Public Works,creative,Observe,1 weekend,Local,"Explore your neighbourhood through photography drawing and public storytelling.",Open to all high-schoolers,UK-only,,https://www.publicworks.org.uk/
+Neighbourhood atlas,Map the Change,community,Connect,3 weeks,Local,"Map the people places and stories that make your area work then publish an atlas together.",Open to all high-schoolers,Global,2026-10-31,https://mapthechange.org/
