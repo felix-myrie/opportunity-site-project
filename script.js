@@ -1,16 +1,16 @@
-let opportunities = [
-  { title: 'Build a tiny app', org: 'CodeDay Labs', type: 'tech', tag: 'Make', time: '1 weekend', mode: 'Online', description: 'Learn by building a small app with mentors and a friendly community of student makers.', audience: 'Open to all high-schoolers', region: 'Global', deadline: '2026-10-10', url: 'https://www.codeday.org/' },
-  { title: 'The climate zine', org: 'Good Energy Project', type: 'creative', tag: 'Publish', time: '2 weeks', mode: 'Anywhere', description: 'Turn your climate questions into a collaborative zine with young writers, artists, and editors.', audience: 'Open to all high-schoolers', region: 'UK-only', deadline: '2026-10-24', url: 'https://www.goodenergy.org.uk/' },
-  { title: 'Youth policy lab', org: 'Civic Futures', type: 'community', tag: 'Shape', time: '6 weeks', mode: 'Online', description: 'Work with other young people to research an issue and turn your ideas into practical policy.', audience: 'Selective', region: 'US-only', deadline: '2026-11-06', url: 'https://www.civicfutures.org.uk/' },
-  { title: 'Ask a scientist', org: 'Field Notes', type: 'science', tag: 'Discover', time: '1 afternoon', mode: 'Online', description: 'Bring your biggest science question to a live conversation and learn how researchers think.', audience: 'Open to all high-schoolers', region: 'Global', deadline: '', url: 'https://www.sciencebuddies.org/' },
-  { title: 'Start a micro-fund', org: 'Common Cents', type: 'business', tag: 'Launch', time: '1 month', mode: 'Local', description: 'Shape a small community project, build a simple budget, and pitch for starter funding.', audience: 'Selective', region: 'US-only', deadline: '2026-12-01', url: 'https://www.commoncents.org/' },
-  { title: 'Open source summer', org: 'GitHub Education', type: 'tech', tag: 'Contribute', time: 'All summer', mode: 'Online', description: 'Make your first contribution to open source and develop practical skills alongside a global community.', audience: 'Open to all high-schoolers', region: 'Global', deadline: '2027-03-15', url: 'https://education.github.com/pack' },
-  { title: 'Street studio', org: 'Public Works', type: 'creative', tag: 'Observe', time: '1 weekend', mode: 'Local', description: 'Explore your neighbourhood through photography, drawing, and public storytelling.', audience: 'Open to all high-schoolers', region: 'UK-only', deadline: '', url: 'https://www.publicworks.org.uk/' },
-  { title: 'Neighbourhood atlas', org: 'Map the Change', type: 'community', tag: 'Connect', time: '3 weeks', mode: 'Local', description: 'Map the people, places, and stories that make your area work, then publish an atlas together.', audience: 'Open to all high-schoolers', region: 'Global', deadline: '2026-10-31', url: 'https://mapthechange.org/' },
-];
+let opportunities = [];
+const embeddedDataEl = document.querySelector('#opportunities-data');
+if (embeddedDataEl && embeddedDataEl.textContent.trim()) {
+  try {
+    opportunities = JSON.parse(embeddedDataEl.textContent.trim());
+  } catch (e) {
+    console.error('Failed to parse embedded opportunities data:', e);
+  }
+}
 
 const grid = document.querySelector('#opportunity-grid');
 const visibleCount = document.querySelector('#visible-count');
+const totalCount = document.querySelector('#total-count');
 const csvStatus = document.querySelector('#csv-status');
 const submissionForm = document.querySelector('#submission-form');
 const submissionStatus = document.querySelector('#submission-status');
@@ -92,6 +92,7 @@ function renderCards() {
       <div class="card-bottom"><span>${escapeHtml(item.time)}</span><span>${item.deadline ? `Deadline: ${escapeHtml(item.deadline)}` : 'No deadline'}</span></div>
     </article>`).join('');
   visibleCount.textContent = String(filtered.length).padStart(2, '0');
+  if (totalCount) totalCount.textContent = String(opportunities.length).padStart(2, '0');
 }
 
 document.querySelectorAll('.filter-button').forEach((button) => {
@@ -136,17 +137,35 @@ submissionForm.addEventListener('submit', async (event) => {
 });
 
 async function loadOpportunities() {
+  const url = window.SPREADSHEET_URL || 'opportunities.csv';
   try {
-    const response = await fetch('opportunities.csv');
-    if (!response.ok) throw new Error('CSV request failed');
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Spreadsheet request failed');
     opportunities = parseCsv(await response.text());
     renderCards();
-    csvStatus.textContent = `${opportunities.length} signals generated from opportunities.csv`;
-    csvStatus.classList.add('is-success');
+    const sourceLabel = window.SPREADSHEET_URL ? 'live Google Sheet' : 'opportunities.csv';
+    if (csvStatus) {
+      csvStatus.textContent = `${opportunities.length} signals generated from ${sourceLabel}`;
+      csvStatus.classList.add('is-success');
+    }
   } catch (error) {
-    csvStatus.textContent = 'Using the built-in preview data. Serve this folder to load opportunities.csv.';
+    if (opportunities.length > 0) {
+      if (csvStatus) {
+        csvStatus.textContent = `${opportunities.length} signals generated from pre-rendered build`;
+        csvStatus.classList.add('is-success');
+      }
+    } else if (csvStatus) {
+      csvStatus.textContent = 'Using the built-in preview data. Serve this folder to load opportunities.csv.';
+    }
   }
 }
 
-renderCards();
+if (opportunities.length > 0) {
+  renderCards();
+  if (csvStatus) {
+    csvStatus.textContent = `${opportunities.length} signals generated from pre-rendered build`;
+    csvStatus.classList.add('is-success');
+  }
+}
+
 loadOpportunities();

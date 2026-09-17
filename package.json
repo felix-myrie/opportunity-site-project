@@ -1,0 +1,13 @@
+{
+  "name": "northstar-opportunities",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Static opportunity finder for high-schoolers with Cloudflare Pages build generation",
+  "scripts": {
+    "build": "node build.js",
+    "start": "node server.js"
+  },
+  "keywords": ["opportunities", "cloudflare-pages", "static-site"],
+  "author": "",
+  "license": "ISC"
+}

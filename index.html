@@ -18,8 +18,9 @@
         <span>starlet<span class="brand-dot">.</span></span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#generator">Generator</a>
+        <a href="#featured">Spotlight</a>
         <a href="#signals">Signals</a>
+        <a href="#generator">Generator</a>
         <a href="#about">Why it works</a>
       </nav>
       <a class="nav-cta" href="#generator">Find a fit <span>↗</span></a>
@@ -57,8 +58,26 @@
         </div>
       </section>
 
+      <section class="featured-section" id="featured" aria-labelledby="featured-title">
+        <div class="section-marker">/ 01 — spotlight</div>
+        <div class="featured-heading">
+          <h2 id="featured-title">Curated moves<br /><span>worth making.</span></h2>
+          <p>Hand-picked opportunities with outsized leverage, travel grants, and hardware rewards.</p>
+        </div>
+        <div class="featured-viewport">
+          <div class="featured-track" id="featured-track"></div>
+        </div>
+        <div class="carousel-bar">
+          <div class="carousel-indicators" id="carousel-indicators" role="tablist" aria-label="Featured slides"></div>
+          <div class="carousel-nav">
+            <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous slide">‹</button>
+            <button class="carousel-btn next" id="carousel-next" aria-label="Next slide">›</button>
+          </div>
+        </div>
+      </section>
+
       <section class="signals-section" id="signals" aria-labelledby="signals-title">
-        <div class="section-marker">/ 01 — live signals</div>
+        <div class="section-marker">/ 02 — live signals</div>
         <div class="signals-heading"><h2 id="signals-title">A few places<br />to <span>begin.</span></h2><p>Real opportunities, selected for people who are still figuring it out.</p></div>
         <div class="opportunity-controls">
           <label class="search-field" for="opportunity-search"><span>Search</span><input id="opportunity-search" type="search" placeholder="Search titles, organisations, or topics" /></label>
@@ -73,17 +92,156 @@
         <div class="filter-row filter-row-secondary" role="group" aria-label="Location filters">
           <button class="filter-button is-active" data-filter-group="region" data-filter="all">Any location</button><button class="filter-button" data-filter-group="region" data-filter="us">US-only</button><button class="filter-button" data-filter-group="region" data-filter="uk">UK-only</button><button class="filter-button" data-filter-group="region" data-filter="global">Global</button>
         </div>
-        <div class="opportunity-grid" id="opportunity-grid"></div>
-        <div class="signals-footer"><span>Showing <strong id="visible-count">06</strong> of 24 signals</span><span class="footer-line"></span><span>Updated for 2025</span></div>
+        <div class="opportunity-grid" id="opportunity-grid">
+        <article class="opportunity-card" style="animation-delay: 0ms">
+          <div class="card-top"><span class="card-tag">Build</span><span>01 / 23</span></div>
+          <div><h3>Hack Club Capitol</h3><p class="card-description">Travel to Washington D.C., learn from workshops and mentors, and ship an app for the Congressional App Challenge.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://capitol.hackclub.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Hack Club Capitol">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>US-only</span></div>
+          <div class="card-bottom"><span>36 hours</span><span>Deadline: 2026-09-24</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 60ms">
+          <div class="card-top"><span class="card-tag">Make</span><span>02 / 23</span></div>
+          <div><h3>Darkroom</h3><p class="card-description">Build a photography or computer vision software or hardware project, and get physical cameras, 35mm film, and photography gear.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://darkroom.hackclub.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Darkroom">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>2 weeks</span><span>Deadline: 2026-09-30</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 120ms">
+          <div class="card-top"><span class="card-tag">Build</span><span>03 / 23</span></div>
+          <div><h3>Retrograde</h3><p class="card-description">Make an authentic retro pixel-art game in your browser, and get a real retro handheld console shipped to your door.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://retrograde.hackclub.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Retrograde">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>2 weeks</span><span>Deadline: 2026-09-30</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 180ms">
+          <div class="card-top"><span class="card-tag">Learn</span><span>04 / 23</span></div>
+          <div><h3>Explore AI Safety</h3><p class="card-description">How can you steer cutting-edge AI technology toward benefits for humanity? Five hours per week with outstanding young people, all seeking to apply their talents and interests for good!</p><div class="card-bottom"><span>Leaf Courses</span><a class="card-arrow" href="https://leaf.courses/" target="_blank" rel="noopener noreferrer" aria-label="Visit Explore AI Safety">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>5 weeks</span><span>Deadline: 2026-10-01</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 240ms">
+          <div class="card-top"><span class="card-tag">Learn</span><span>05 / 23</span></div>
+          <div><h3>Biology for a Better Tomorrow</h3><p class="card-description">How you can use biology to best help others and improve the future, from morally-motivated medicine to revolutionary research? Five hours per week with outstanding young people, all seeking to apply their talents and interests for good!</p><div class="card-bottom"><span>Leaf Courses</span><a class="card-arrow" href="https://leaf.courses/" target="_blank" rel="noopener noreferrer" aria-label="Visit Biology for a Better Tomorrow">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>5 weeks</span><span>Deadline: 2026-10-01</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 300ms">
+          <div class="card-top"><span class="card-tag">Learn</span><span>06 / 23</span></div>
+          <div><h3>Power, Policy and Progress</h3><p class="card-description">How you can use the lessons of history, politics, economics, and law to make a positive impact and steer humanity onto a better path? Five hours per week with outstanding young people, all seeking to apply their talents and interests for good!</p><div class="card-bottom"><span>Leaf Courses</span><a class="card-arrow" href="https://leaf.courses/" target="_blank" rel="noopener noreferrer" aria-label="Visit Power, Policy and Progress">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>5 weeks</span><span>Deadline: 2026-10-01</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 360ms">
+          <div class="card-top"><span class="card-tag">Learn</span><span>07 / 23</span></div>
+          <div><h3>The Mathematics of Morality</h3><p class="card-description">How you can use mathematics and quantitative careers to best help others and multiply your positive impact? Five hours per week with outstanding young people, all seeking to apply their talents and interests for good!</p><div class="card-bottom"><span>Leaf Courses</span><a class="card-arrow" href="https://leaf.courses/" target="_blank" rel="noopener noreferrer" aria-label="Visit The Mathematics of Morality">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>5 weeks</span><span>Deadline: 2026-10-01</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 420ms">
+          <div class="card-top"><span class="card-tag">Make</span><span>08 / 23</span></div>
+          <div><h3>Bento</h3><p class="card-description">Design and code a creative website laid out like a traditional Japanese bento box, and Hack Club will ship a real sushi dinner to your door.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://bento.hackclub.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Bento">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>1 weekend</span><span>Deadline: 2026-10-14</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 480ms">
+          <div class="card-top"><span class="card-tag">Publish</span><span>09 / 23</span></div>
+          <div><h3>The climate zine</h3><p class="card-description">Turn your climate questions into a collaborative zine with young writers artists and editors.</p><div class="card-bottom"><span>Good Energy Project</span><a class="card-arrow" href="https://www.goodenergy.org.uk/" target="_blank" rel="noopener noreferrer" aria-label="Visit The climate zine">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>UK-only</span></div>
+          <div class="card-bottom"><span>2 weeks</span><span>Deadline: 2026-10-24</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 540ms">
+          <div class="card-top"><span class="card-tag">Connect</span><span>10 / 23</span></div>
+          <div><h3>Neighbourhood atlas</h3><p class="card-description">Map the people places and stories that make your area work then publish an atlas together.</p><div class="card-bottom"><span>Map the Change</span><a class="card-arrow" href="https://mapthechange.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Neighbourhood atlas">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>3 weeks</span><span>Deadline: 2026-10-31</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 600ms">
+          <div class="card-top"><span class="card-tag">Shape</span><span>11 / 23</span></div>
+          <div><h3>Youth policy lab</h3><p class="card-description">Work with other young people to research an issue and turn your ideas into practical policy.</p><div class="card-bottom"><span>Civic Futures</span><a class="card-arrow" href="https://www.civicfutures.org.uk/" target="_blank" rel="noopener noreferrer" aria-label="Visit Youth policy lab">↗</a></div></div>
+          <div class="card-tags"><span>Selective</span><span>US-only</span></div>
+          <div class="card-bottom"><span>6 weeks</span><span>Deadline: 2026-11-06</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 660ms">
+          <div class="card-top"><span class="card-tag">Build</span><span>12 / 23</span></div>
+          <div><h3>Haven</h3><p class="card-description">Join a worldwide high-school game jam happening across 200+ cities on November 14–15 to make games, team up with friends, and win prizes.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://haven.hackclub.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Haven">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>1 weekend</span><span>Deadline: 2026-11-15</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 720ms">
+          <div class="card-top"><span class="card-tag">Build</span><span>13 / 23</span></div>
+          <div><h3>Atlantis</h3><p class="card-description">Log 5 hours of CAD modeling each week to design 3D parts and mechanisms, and Hack Club will ship you a free 3D printer.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://atlantis.hackclub.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Atlantis">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>8 weeks</span><span>Deadline: 2026-11-16</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 780ms">
+          <div class="card-top"><span class="card-tag">Build</span><span>14 / 23</span></div>
+          <div><h3>Snowglobe</h3><p class="card-description">Code 50 hours on passion projects to earn a travel grant and flight to San Francisco for the largest all-girls high school hackathon.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://snowglobe.hackclub.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Snowglobe">↗</a></div></div>
+          <div class="card-tags"><span>Selective</span><span>Global</span></div>
+          <div class="card-bottom"><span>50 hours</span><span>Deadline: 2026-11-22</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 840ms">
+          <div class="card-top"><span class="card-tag">Build</span><span>15 / 23</span></div>
+          <div><h3>Forge</h3><p class="card-description">Design custom electronics, PCBs, or hardware projects with grant funding and mentorship from Hack Club to cover parts and fabrication.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://forge.hackclub.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Forge">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>1 month</span><span>Deadline: 2026-11-30</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 900ms">
+          <div class="card-top"><span class="card-tag">Launch</span><span>16 / 23</span></div>
+          <div><h3>Start a micro-fund</h3><p class="card-description">Shape a small community project build a simple budget and pitch for starter funding.</p><div class="card-bottom"><span>Common Cents</span><a class="card-arrow" href="https://www.commoncents.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Start a micro-fund">↗</a></div></div>
+          <div class="card-tags"><span>Selective</span><span>US-only</span></div>
+          <div class="card-bottom"><span>1 month</span><span>Deadline: 2026-12-01</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 960ms">
+          <div class="card-top"><span class="card-tag">Build</span><span>17 / 23</span></div>
+          <div><h3>Hackcraft Mod Edition</h3><p class="card-description">Create your own custom Minecraft mod using Java, learn game modding fundamentals, and earn a free copy of Minecraft plus server hosting.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://hackcraft.hackclub.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Hackcraft Mod Edition">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>2 weeks</span><span>Deadline: 2026-12-31</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 1020ms">
+          <div class="card-top"><span class="card-tag">Contribute</span><span>18 / 23</span></div>
+          <div><h3>Open source summer</h3><p class="card-description">Make your first contribution to open source and develop practical skills alongside a global community.</p><div class="card-bottom"><span>GitHub Education</span><a class="card-arrow" href="https://education.github.com/pack" target="_blank" rel="noopener noreferrer" aria-label="Visit Open source summer">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>All summer</span><span>Deadline: 2027-03-15</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 1080ms">
+          <div class="card-top"><span class="card-tag">Discover</span><span>19 / 23</span></div>
+          <div><h3>Ask a scientist</h3><p class="card-description">Bring your biggest science question to a live conversation and learn how researchers think.</p><div class="card-bottom"><span>Field Notes</span><a class="card-arrow" href="https://www.sciencebuddies.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Ask a scientist">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>1 afternoon</span><span>No deadline</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 1140ms">
+          <div class="card-top"><span class="card-tag">Observe</span><span>20 / 23</span></div>
+          <div><h3>Street studio</h3><p class="card-description">Explore your neighbourhood through photography drawing and public storytelling.</p><div class="card-bottom"><span>Public Works</span><a class="card-arrow" href="https://www.publicworks.org.uk/" target="_blank" rel="noopener noreferrer" aria-label="Visit Street studio">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>UK-only</span></div>
+          <div class="card-bottom"><span>1 weekend</span><span>No deadline</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 1200ms">
+          <div class="card-top"><span class="card-tag">Build</span><span>21 / 23</span></div>
+          <div><h3>Sprig</h3><p class="card-description">Build a tile-based game in JavaScript using the Sprig web editor, and Hack Club will ship you a custom handheld console to play it on.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://sprig.hackclub.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Sprig">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>1 weekend</span><span>No deadline</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 1260ms">
+          <div class="card-top"><span class="card-tag">Make</span><span>22 / 23</span></div>
+          <div><h3>Boba Drops</h3><p class="card-description">Build and publish your first personal website or portfolio, share what you made, and get $5 for a celebratory boba tea.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://boba.hackclub.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Boba Drops">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>1 afternoon</span><span>No deadline</span></div>
+        </article>
+        <article class="opportunity-card" style="animation-delay: 1320ms">
+          <div class="card-top"><span class="card-tag">Connect</span><span>23 / 23</span></div>
+          <div><h3>Hack Club Clubs</h3><p class="card-description">Start or lead a coding club at your high school with free curriculum, $500 in startup hardware grants, domains, and stickers for your members.</p><div class="card-bottom"><span>Hack Club</span><a class="card-arrow" href="https://clubs.hackclub.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Hack Club Clubs">↗</a></div></div>
+          <div class="card-tags"><span>Open to all high-schoolers</span><span>Global</span></div>
+          <div class="card-bottom"><span>All year</span><span>No deadline</span></div>
+        </article>
+      </div>
+        <div class="signals-footer"><span>Showing <strong id="visible-count">23</strong> of <span id="total-count">23</span> signals</span><span class="footer-line"></span><span>Updated for 2025</span></div>
       </section>
 
       <section class="generator-section" id="generator" aria-labelledby="generator-title">
-        <div class="section-marker">/ 02 — submit an opportunity</div>
+        <div class="section-marker">/ 03 — submit an opportunity</div>
         <div class="generator-heading">
           <h2 id="generator-title">Send us an<br /><span>opportunity.</span></h2>
           <div>
             <p>Know a project, program, or community worth sharing? Tell us about it and help someone make their next move.</p>
-            <p id="csv-status" class="csv-status">Loading signals from opportunities.csv</p>
+            <p id="csv-status" class="csv-status">23 signals generated from opportunities.csv</p>
           </div>
         </div>
         <div class="generator-layout">
@@ -118,12 +276,14 @@
       </section>
 
       <section class="about-section" id="about">
-        <div class="about-statement"><span class="section-marker">/ 03 — a different compass</span><h2>The future is not<br />a checklist<span>.</span></h2></div>
+        <div class="about-statement"><span class="section-marker">/ 04 — a different compass</span><h2>The future is not<br />a checklist<span>.</span></h2></div>
         <div class="about-copy"><p>It’s easy to mistake a perfectly optimised plan for progress. Northstar is built for the in-between: the half-formed idea, the “why not?”, the first email.</p><p>We collect the doors worth opening so you can spend your energy walking through one.</p><a class="text-link" href="#generator">Find your next door <span>↗</span></a></div>
       </section>
     </main>
 
-    <footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">✦</span><span>starlet<span class="brand-dot">.</span></span></a><span class="footer-note">Made for the beautifully undecided.</span><span class="footer-year">© 2025</span></footer>
+    <footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">✦</span><span>starlet<span class="brand-dot">.</span></span></a><span class="footer-note">made by <a href="https://felix.ink">felix myrie</a> for any students seeking a new opportunity.</span><span class="footer-year">© 2025</span></footer>
+    
+    <script id="opportunities-data" type="application/json">[{"title":"The climate zine","org":"Good Energy Project","type":"creative","tag":"Publish","time":"2 weeks","mode":"Anywhere","description":"Turn your climate questions into a collaborative zine with young writers artists and editors.","audience":"Open to all high-schoolers","region":"UK-only","deadline":"2026-10-24","url":"https://www.goodenergy.org.uk/"},{"title":"Youth policy lab","org":"Civic Futures","type":"community","tag":"Shape","time":"6 weeks","mode":"Online","description":"Work with other young people to research an issue and turn your ideas into practical policy.","audience":"Selective","region":"US-only","deadline":"2026-11-06","url":"https://www.civicfutures.org.uk/"},{"title":"Ask a scientist","org":"Field Notes","type":"science","tag":"Discover","time":"1 afternoon","mode":"Online","description":"Bring your biggest science question to a live conversation and learn how researchers think.","audience":"Open to all high-schoolers","region":"Global","deadline":"","url":"https://www.sciencebuddies.org/"},{"title":"Start a micro-fund","org":"Common Cents","type":"business","tag":"Launch","time":"1 month","mode":"Local","description":"Shape a small community project build a simple budget and pitch for starter funding.","audience":"Selective","region":"US-only","deadline":"2026-12-01","url":"https://www.commoncents.org/"},{"title":"Open source summer","org":"GitHub Education","type":"tech","tag":"Contribute","time":"All summer","mode":"Online","description":"Make your first contribution to open source and develop practical skills alongside a global community.","audience":"Open to all high-schoolers","region":"Global","deadline":"2027-03-15","url":"https://education.github.com/pack"},{"title":"Street studio","org":"Public Works","type":"creative","tag":"Observe","time":"1 weekend","mode":"Local","description":"Explore your neighbourhood through photography drawing and public storytelling.","audience":"Open to all high-schoolers","region":"UK-only","deadline":"","url":"https://www.publicworks.org.uk/"},{"title":"Neighbourhood atlas","org":"Map the Change","type":"community","tag":"Connect","time":"3 weeks","mode":"Local","description":"Map the people places and stories that make your area work then publish an atlas together.","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-10-31","url":"https://mapthechange.org/"},{"title":"Hack Club Capitol","org":"Hack Club","type":"tech","tag":"Build","time":"36 hours","mode":"Local","description":"Travel to Washington D.C., learn from workshops and mentors, and ship an app for the Congressional App Challenge.","audience":"Open to all high-schoolers","region":"US-only","deadline":"2026-09-24","url":"https://capitol.hackclub.com/"},{"title":"Sprig","org":"Hack Club","type":"tech","tag":"Build","time":"1 weekend","mode":"Online","description":"Build a tile-based game in JavaScript using the Sprig web editor, and Hack Club will ship you a custom handheld console to play it on.","audience":"Open to all high-schoolers","region":"Global","deadline":"","url":"https://sprig.hackclub.com"},{"title":"Boba Drops","org":"Hack Club","type":"tech","tag":"Make","time":"1 afternoon","mode":"Online","description":"Build and publish your first personal website or portfolio, share what you made, and get $5 for a celebratory boba tea.","audience":"Open to all high-schoolers","region":"Global","deadline":"","url":"https://boba.hackclub.com"},{"title":"Forge","org":"Hack Club","type":"tech","tag":"Build","time":"1 month","mode":"Online","description":"Design custom electronics, PCBs, or hardware projects with grant funding and mentorship from Hack Club to cover parts and fabrication.","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-11-30","url":"https://forge.hackclub.com"},{"title":"Atlantis","org":"Hack Club","type":"tech","tag":"Build","time":"8 weeks","mode":"Online","description":"Log 5 hours of CAD modeling each week to design 3D parts and mechanisms, and Hack Club will ship you a free 3D printer.","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-11-16","url":"https://atlantis.hackclub.com"},{"title":"Snowglobe","org":"Hack Club","type":"tech","tag":"Build","time":"50 hours","mode":"Local","description":"Code 50 hours on passion projects to earn a travel grant and flight to San Francisco for the largest all-girls high school hackathon.","audience":"Selective","region":"Global","deadline":"2026-11-22","url":"https://snowglobe.hackclub.com/"},{"title":"Haven","org":"Hack Club","type":"tech","tag":"Build","time":"1 weekend","mode":"Local","description":"Join a worldwide high-school game jam happening across 200+ cities on November 14–15 to make games, team up with friends, and win prizes.","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-11-15","url":"https://haven.hackclub.com"},{"title":"Bento","org":"Hack Club","type":"creative","tag":"Make","time":"1 weekend","mode":"Online","description":"Design and code a creative website laid out like a traditional Japanese bento box, and Hack Club will ship a real sushi dinner to your door.","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-10-14","url":"https://bento.hackclub.com"},{"title":"Hackcraft Mod Edition","org":"Hack Club","type":"tech","tag":"Build","time":"2 weeks","mode":"Online","description":"Create your own custom Minecraft mod using Java, learn game modding fundamentals, and earn a free copy of Minecraft plus server hosting.","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-12-31","url":"https://hackcraft.hackclub.com"},{"title":"Darkroom","org":"Hack Club","type":"creative","tag":"Make","time":"2 weeks","mode":"Online","description":"Build a photography or computer vision software or hardware project, and get physical cameras, 35mm film, and photography gear.","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-09-30","url":"https://darkroom.hackclub.com/"},{"title":"Hack Club Clubs","org":"Hack Club","type":"community","tag":"Connect","time":"All year","mode":"Local","description":"Start or lead a coding club at your high school with free curriculum, $500 in startup hardware grants, domains, and stickers for your members.","audience":"Open to all high-schoolers","region":"Global","deadline":"","url":"https://clubs.hackclub.com/"},{"title":"Retrograde","org":"Hack Club","type":"creative","tag":"Build","time":"2 weeks","mode":"Online","description":"Make an authentic retro pixel-art game in your browser, and get a real retro handheld console shipped to your door.","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-09-30","url":"https://retrograde.hackclub.com/"},{"title":"Explore AI Safety","org":"Leaf Courses","type":"tech","tag":"Learn","time":"5 weeks","mode":"Online","description":"How can you steer cutting-edge AI technology toward benefits for humanity? Five hours per week with outstanding young people, all seeking to apply their talents and interests for good!","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-10-01","url":"https://leaf.courses/"},{"title":"Biology for a Better Tomorrow","org":"Leaf Courses","type":"science","tag":"Learn","time":"5 weeks","mode":"Online","description":"How you can use biology to best help others and improve the future, from morally-motivated medicine to revolutionary research? Five hours per week with outstanding young people, all seeking to apply their talents and interests for good!","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-10-01","url":"https://leaf.courses/"},{"title":"Power, Policy and Progress","org":"Leaf Courses","type":"community","tag":"Learn","time":"5 weeks","mode":"Online","description":"How you can use the lessons of history, politics, economics, and law to make a positive impact and steer humanity onto a better path? Five hours per week with outstanding young people, all seeking to apply their talents and interests for good!","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-10-01","url":"https://leaf.courses/"},{"title":"The Mathematics of Morality","org":"Leaf Courses","type":"science","tag":"Learn","time":"5 weeks","mode":"Online","description":"How you can use mathematics and quantitative careers to best help others and multiply your positive impact? Five hours per week with outstanding young people, all seeking to apply their talents and interests for good!","audience":"Open to all high-schoolers","region":"Global","deadline":"2026-10-01","url":"https://leaf.courses/"}]</script>
     <script src="script.js"></script>
   </body>
 </html>
