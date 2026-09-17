@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Northstar helps high-schoolers find projects, programs, and people worth their summer." />
+    <title>Northstar — Find your next signal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Northstar home">
+        <span class="brand-mark">✦</span>
+        <span>northstar<span class="brand-dot">.</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#generator">Generator</a>
+        <a href="#signals">Signals</a>
+        <a href="#about">Why it works</a>
+      </nav>
+      <a class="nav-cta" href="#generator">Find a fit <span>↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="eyebrow-pulse"></span> Opportunity intelligence for the curious</p>
+          <h1 id="hero-title">Make your<br /><em>next move</em><span class="hero-star">✦</span></h1>
+          <p class="hero-intro">A sharper way for high-schoolers to find the people, projects, and programs that turn “maybe” into momentum.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#generator">Build my shortlist <span>↓</span></a>
+            <a class="text-link" href="#signals">Explore signals <span>↗</span></a>
+          </div>
+        </div>
+        <div class="hero-art reveal reveal-delay" aria-label="Abstract animated constellation graphic">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+          <div class="orbital-core"><span>your<br />north<br />star</span></div>
+          <div class="orbit-label label-top">01 / curiosity</div>
+          <div class="orbit-label label-right">02 / courage</div>
+          <div class="orbit-label label-bottom">03 / connection</div>
+          <div class="star-dot dot-one"></div>
+          <div class="star-dot dot-two"></div>
+          <div class="star-dot dot-three"></div>
+        </div>
+        <div class="hero-scroll"><span>scroll to discover</span><span class="scroll-line"></span></div>
+      </section>
+
+      <section class="ticker" aria-label="Northstar principles">
+        <div class="ticker-track">
+          <span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span><span>less scrolling <b>✦</b> more starting</span>
+        </div>
+      </section>
+
+      <section class="generator-section" id="generator" aria-labelledby="generator-title">
+        <div class="section-marker">/ 01 — the generator</div>
+        <div class="generator-heading">
+          <h2 id="generator-title">Start with a<br /><span>signal.</span></h2>
+          <div>
+            <p>Tell us what pulls at your attention. We’ll surface a few places to put it to work.</p>
+            <p id="csv-status" class="csv-status">Loading signals from opportunities.csv</p>
+          </div>
+        </div>
+        <div class="generator-layout">
+          <form class="generator-form" id="generator-form">
+            <div class="form-step">
+              <span class="step-number">01</span>
+              <div class="step-content">
+                <label for="interest">I want to explore</label>
+                <select id="interest" name="interest">
+                  <option value="all">a little bit of everything</option>
+                  <option value="tech">technology & code</option>
+                  <option value="creative">art, media & design</option>
+                  <option value="community">community & change</option>
+                  <option value="science">science & discovery</option>
+                  <option value="business">business & ideas</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-step">
+              <span class="step-number">02</span>
+              <div class="step-content">
+                <label for="time">I have</label>
+                <select id="time" name="time">
+                  <option value="any">some time to make it happen</option>
+                  <option value="weekend">a weekend</option>
+                  <option value="month">a month or two</option>
+                  <option value="summer">my whole summer</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-step">
+              <span class="step-number">03</span>
+              <div class="step-content">
+                <label for="mode">I’d rather</label>
+                <select id="mode" name="mode">
+                  <option value="any">surprise myself</option>
+                  <option value="online">work online</option>
+                  <option value="local">stay close to home</option>
+                  <option value="people">meet new people</option>
+                </select>
+              </div>
+            </div>
+            <button class="button button-dark" type="submit">Generate my signals <span>✦</span></button>
+            <p class="form-note">No account. No inbox ambushes. Just a useful place to start.</p>
+          </form>
+          <div class="generator-output" id="generator-output" aria-live="polite">
+            <div class="output-topline"><span>your signal mix</span><span id="result-count">06 / 24</span></div>
+            <div class="output-content">
+              <div class="output-orbit"><span>GO<br />MAKE<br />A THING</span></div>
+              <p class="output-message">Good things happen when curiosity gets a deadline.</p>
+              <p class="output-caption" id="output-caption">Here are six places to begin. Pick the one that makes you a little nervous.</p>
+            </div>
+            <div class="output-arrow">↓</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="signals-section" id="signals" aria-labelledby="signals-title">
+        <div class="section-marker">/ 02 — live signals</div>
+        <div class="signals-heading"><h2 id="signals-title">A few places<br />to <span>begin.</span></h2><p>Real opportunities, selected for people who are still figuring it out.</p></div>
+        <div class="filter-row" role="group" aria-label="Filter opportunities">
+          <button class="filter-button is-active" data-filter="all">All signals</button><button class="filter-button" data-filter="tech">Tech + code</button><button class="filter-button" data-filter="creative">Creative</button><button class="filter-button" data-filter="community">Community</button>
+        </div>
+        <div class="opportunity-grid" id="opportunity-grid"></div>
+        <div class="signals-footer"><span>Showing <strong id="visible-count">06</strong> of 24 signals</span><span class="footer-line"></span><span>Updated for 2025</span></div>
+      </section>
+
+      <section class="about-section" id="about">
+        <div class="about-statement"><span class="section-marker">/ 03 — a different compass</span><h2>The future is not<br />a checklist<span>.</span></h2></div>
+        <div class="about-copy"><p>It’s easy to mistake a perfectly optimised plan for progress. Northstar is built for the in-between: the half-formed idea, the “why not?”, the first email.</p><p>We collect the doors worth opening so you can spend your energy walking through one.</p><a class="text-link" href="#generator">Find your next door <span>↗</span></a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">✦</span><span>northstar<span class="brand-dot">.</span></span></a><span class="footer-note">Made for the beautifully undecided.</span><span class="footer-year">© 2025</span></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
