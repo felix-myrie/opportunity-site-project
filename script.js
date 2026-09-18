@@ -106,36 +106,51 @@ document.querySelectorAll('.filter-button').forEach((button) => {
 document.querySelector('#opportunity-search').addEventListener('input', renderCards);
 document.querySelector('#deadline-sort').addEventListener('change', renderCards);
 
+const endpoint = 'https://opportunity-worker.graphicvoxel.workers.dev/';
+
 submissionForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const endpoint = submissionForm.dataset.endpoint.trim();
-  if (!endpoint) {
-    submissionStatus.textContent = 'Add the Worker URL to the form before accepting submissions.';
-    return;
-  }
 
   const submitButton = submissionForm.querySelector('button[type="submit"]');
+
   submitButton.disabled = true;
   submissionStatus.textContent = 'Sending your signal...';
+
   try {
     const response = await fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: submissionForm.elements.name.value.trim(),
-        description: submissionForm.elements.description.value.trim(),
-      }),
+        description: submissionForm.elements.description.value.trim()
+      })
     });
-    if (!response.ok) throw new Error('Submission request failed');
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Submission request failed');
+    }
+
     submissionForm.reset();
-    submissionStatus.textContent = 'Thanks. We’ll review your signal soon.';
+
+    submissionStatus.textContent =
+      'Thanks. We’ll review your signal soon.';
+
+    console.log('Submission saved:', data);
+
   } catch (error) {
-    submissionStatus.textContent = 'That signal did not send. Please try again in a moment.';
+    console.error('Submission error:', error);
+
+    submissionStatus.textContent =
+      'That signal did not send. Please try again in a moment.';
+
   } finally {
     submitButton.disabled = false;
   }
 });
-
 async function loadOpportunities() {
   const url = window.SPREADSHEET_URL || 'opportunities.csv';
   try {

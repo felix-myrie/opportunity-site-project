@@ -1,0 +1,795 @@
+<script>
+(() => {
+  "use strict";
+
+  /*
+   * OPPORTUNITY SHOWCASE SLIDER
+   * Self-contained: HTML, CSS and JavaScript.
+   * Paste before </body>.
+   *
+   * Replace the items in OPPORTUNITIES with your own content.
+   */
+
+  const OPPORTUNITIES = [
+    {
+      organisation: "Leaf Courses",
+      badge: "Technology / Humanities",
+      title: "Explore how to steer cutting-edge AI technology toward benefits for humanity.",
+      image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1400&q=85",
+      url: "https://leaf.courses/dilemmas-and-dangers-in-ai",
+      accent: "orange"
+    },
+    {
+      organisation: "LSE Public Talks",
+      badge: "Humanities",
+      title: "Learn from experts in open lectures across the humanities, in London and online.",
+      image: "https://upload.wikimedia.org/wikipedia/commons/5/56/View_of_London_School_of_Economics_from_Houghton_Street_-_geograph.org.uk_-_5495370.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      url: "https://www.lse.ac.uk/events",
+      accent: "blue"
+    },
+    {
+      organisation: "Hack Club Forge",
+      badge: "Technology / Engineering",
+      title: "Unlimited funding to build your dream hardware projects and learn PCB design.",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85",
+      url: "https://forge.hackclub.com/",
+      accent: "orange"
+    },
+    {
+      organisation: "Leaf Courses",
+      badge: "Mathematics / Philosophy",
+      title: "Explore how you can use mathematics to best help others and multiply your positive impact!",
+      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1400&q=85",
+      url: "https://leaf.courses/the-mathematics-of-morality",
+      accent: "yellow"
+    },
+
+    {
+      organisation: "Github Student Developer Pack",
+      badge: "Open Source / Community",
+      title: "Free access to tools and hosting to bring your ideas to reality.",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=85",
+      url: "https://education.github.com/pack",
+      accent: "blue"
+    }
+  ];
+
+  const STYLE_ID = "opportunity-showcase-styles";
+  const SECTION_ID = "opportunity-showcase";
+
+  /*
+   * Do not create a duplicate if the script is loaded twice.
+   */
+  if (document.getElementById(SECTION_ID)) return;
+
+  /*
+   * Inject component-specific CSS.
+   */
+  const css = `
+    #${SECTION_ID} {
+      --showcase-ink: #19191a;
+      --showcase-paper: #f3f0e9;
+      --showcase-orange: #ff6238;
+      --showcase-line: rgba(25, 25, 26, .18);
+
+      position: relative;
+      padding: 7rem 5vw 5rem;
+      border-bottom: 1px solid var(--showcase-line);
+      background: var(--showcase-paper);
+      color: var(--showcase-ink);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    #${SECTION_ID} *,
+    #${SECTION_ID} *::before,
+    #${SECTION_ID} *::after {
+      box-sizing: border-box;
+    }
+
+    #${SECTION_ID} .showcase-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 3rem;
+      margin-bottom: 2.8rem;
+    }
+
+    #${SECTION_ID} .showcase-kicker {
+      margin: 0 0 1rem;
+      font-family: var(--mono, monospace);
+      font-size: .68rem;
+      line-height: 1;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--showcase-orange);
+    }
+
+    #${SECTION_ID} .showcase-title {
+      margin: 0;
+      font-family: var(--display, sans-serif);
+      font-size: clamp(2.8rem, 5.5vw, 5.4rem);
+      line-height: .88;
+      letter-spacing: -.08em;
+      font-weight: 600;
+    }
+
+    #${SECTION_ID} .showcase-title em {
+      font-style: normal;
+      color: var(--showcase-orange);
+    }
+
+    #${SECTION_ID} .showcase-description {
+      max-width: 380px;
+      margin: 0;
+      font-family: var(--display, sans-serif);
+      font-size: .95rem;
+      line-height: 1.45;
+      color: #666;
+    }
+
+    #${SECTION_ID} .showcase-viewport {
+      position: relative;
+      overflow: hidden;
+      margin: 0 -2px;
+    }
+
+    #${SECTION_ID} .showcase-track {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 4px 2px 18px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+      cursor: grab;
+    }
+
+    #${SECTION_ID} .showcase-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    #${SECTION_ID} .showcase-track.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+      scroll-snap-type: none;
+    }
+
+    #${SECTION_ID} .showcase-card {
+        position: relative;
+      z-index: 5;
+      pointer-events: auto;
+      flex: 0 0 calc(50% - .75rem);
+      min-height: 390px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.2rem 2.2rem 2rem;
+      overflow: hidden;
+      border-radius: 14px;
+      background-color: #282828;
+      background-size: cover;
+      background-position: center;
+      text-decoration: none;
+      scroll-snap-align: start;
+      isolation: isolate;
+      transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s ease;
+      pointer-events: auto !important;
+      cursor: pointer;
+    }
+
+    #${SECTION_ID} .showcase-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 38px rgba(25, 25, 26, .18);
+    }
+
+    #${SECTION_ID} .showcase-card:focus-visible {
+      outline: 3px solid var(--showcase-orange);
+      outline-offset: 4px;
+    }
+
+    #${SECTION_ID} .showcase-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(15, 15, 18, .28) 0%,
+          rgba(15, 15, 18, .12) 28%,
+          rgba(15, 15, 18, .72) 66%,
+          rgba(15, 15, 18, .96) 100%
+        );
+      pointer-events: none;
+    }
+
+    #${SECTION_ID} .showcase-card[data-accent="orange"]::before,
+    #${SECTION_ID} .showcase-card[data-accent="blue"]::before,
+    #${SECTION_ID} .showcase-card[data-accent="yellow"]::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      z-index: 3;
+      background: var(--showcase-orange);
+    }
+
+    #${SECTION_ID} .showcase-card[data-accent="blue"]::before {
+      background: #b9d9ff;
+    }
+
+    #${SECTION_ID} .showcase-card[data-accent="yellow"]::before {
+      background: #f9d748;
+    }
+
+    #${SECTION_ID} .showcase-card-content,
+    #${SECTION_ID} .showcase-card-footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    #${SECTION_ID} .showcase-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: var(--mono, monospace);
+      font-size: .6rem;
+      line-height: 1;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.72);
+    }
+
+    #${SECTION_ID} .showcase-index {
+      color: rgba(255,255,255,.5);
+    }
+
+    #${SECTION_ID} .showcase-organisation {
+      margin: 0;
+      font-family: var(--display, sans-serif);
+      font-size: 1.3rem;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    #${SECTION_ID} .showcase-badge {
+      display: inline-block;
+      width: fit-content;
+      margin-top: .9rem;
+      padding: 5px 9px;
+      border-radius: 4px;
+      background: rgba(255,255,255,.94);
+      color: #19191a;
+      font-family: var(--mono, monospace);
+      font-size: .56rem;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    #${SECTION_ID} .showcase-card-footer {
+      margin-top: auto;
+    }
+
+    #${SECTION_ID} .showcase-card-title {
+      max-width: 92%;
+      margin: 0 0 1.6rem;
+      font-family: var(--display, sans-serif);
+      font-size: clamp(1.35rem, 2.1vw, 1.85rem);
+      line-height: 1.2;
+      font-weight: 600;
+      letter-spacing: -.04em;
+      color: #fff;
+    }
+
+    #${SECTION_ID} .showcase-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 17px;
+      border-radius: 6px;
+      background: #fff;
+      color: #19191a;
+      font-family: var(--display, sans-serif);
+      font-size: .8rem;
+      line-height: 1;
+      font-weight: 600;
+      transition:
+        background .2s ease,
+        transform .2s ease;
+    }
+
+    #${SECTION_ID} .showcase-card:hover .showcase-cta {
+      background: var(--showcase-paper);
+      transform: translateX(3px);
+    }
+
+    #${SECTION_ID} .showcase-cta-arrow {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    #${SECTION_ID} .showcase-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 1.6rem;
+    }
+
+    #${SECTION_ID} .showcase-indicators {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 25px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(25,25,26,.07);
+    }
+
+    #${SECTION_ID} .showcase-dot {
+      width: 5px;
+      height: 5px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(25,25,26,.25);
+      cursor: pointer;
+      transition:
+        width .3s ease,
+        background .3s ease;
+    }
+
+    #${SECTION_ID} .showcase-dot.is-active {
+      width: 24px;
+      border-radius: 3px;
+      background: var(--showcase-ink);
+    }
+
+    #${SECTION_ID} .showcase-dot:focus-visible {
+      outline: 2px solid var(--showcase-orange);
+      outline-offset: 3px;
+    }
+
+    #${SECTION_ID} .showcase-navigation {
+      display: flex;
+      gap: 8px;
+    }
+
+    #${SECTION_ID} .showcase-button {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: 1px solid rgba(25,25,26,.18);
+      border-radius: 6px;
+      background: rgba(25,25,26,.06);
+      color: var(--showcase-ink);
+      font-family: var(--display, sans-serif);
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+    }
+
+    #${SECTION_ID} .showcase-button:hover:not(:disabled) {
+      border-color: var(--showcase-ink);
+      background: var(--showcase-ink);
+      color: var(--showcase-paper);
+    }
+
+    #${SECTION_ID} .showcase-button:focus-visible {
+      outline: 2px solid var(--showcase-orange);
+      outline-offset: 3px;
+    }
+
+    #${SECTION_ID} .showcase-button:disabled {
+      opacity: .3;
+      cursor: default;
+    }
+
+    #${SECTION_ID} .showcase-count {
+      margin-left: auto;
+      font-family: var(--mono, monospace);
+      font-size: .62rem;
+      line-height: 1;
+      letter-spacing: .06em;
+      color: #777;
+    }
+
+    @media (max-width: 860px) {
+      #${SECTION_ID} {
+        padding: 5rem 6vw 4rem;
+      }
+
+      #${SECTION_ID} .showcase-heading {
+        display: block;
+        margin-bottom: 2.5rem;
+      }
+
+      #${SECTION_ID} .showcase-description {
+        margin-top: 1.5rem;
+      }
+
+      #${SECTION_ID} .showcase-card {
+        flex-basis: 100%;
+        min-height: 350px;
+        padding: 1.8rem 1.6rem 1.6rem;
+      }
+
+      #${SECTION_ID} .showcase-controls {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #${SECTION_ID} .showcase-title {
+        font-size: 3.7rem;
+      }
+
+      #${SECTION_ID} .showcase-card {
+        min-height: 330px;
+      }
+
+      #${SECTION_ID} .showcase-count {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #${SECTION_ID} .showcase-track {
+        scroll-behavior: auto;
+      }
+
+      #${SECTION_ID} .showcase-card,
+      #${SECTION_ID} .showcase-cta,
+      #${SECTION_ID} .showcase-button,
+      #${SECTION_ID} .showcase-dot {
+        transition: none;
+      }
+    }
+  `;
+
+  const style = document.createElement("style");
+  style.id = STYLE_ID;
+  style.textContent = css;
+  document.head.appendChild(style);
+
+  /*
+   * Build the section.
+   */
+  const section = document.createElement("section");
+  section.id = SECTION_ID;
+  section.setAttribute("aria-label", "Featured opportunities");
+
+  section.innerHTML = `
+    <div class="showcase-heading">
+      <div>
+        <p class="showcase-kicker">03 / Featured opportunities</p>
+        <h2 class="showcase-title">Find your<br><em>next move.</em></h2>
+      </div>
+      <p class="showcase-description">
+        A selection of organisations, teams and projects
+        building what comes next.
+      </p>
+    </div>
+
+    <div class="showcase-viewport">
+      <div class="showcase-track" tabindex="0" role="region" aria-label="Opportunity slider"></div>
+    </div>
+
+    <div class="showcase-controls">
+      <div class="showcase-indicators" role="tablist" aria-label="Select opportunity"></div>
+
+      <span class="showcase-count" aria-live="polite"></span>
+
+      <div class="showcase-navigation">
+        <button class="showcase-button showcase-prev" type="button" aria-label="Previous opportunity">
+          ←
+        </button>
+        <button class="showcase-button showcase-next" type="button" aria-label="Next opportunity">
+          →
+        </button>
+      </div>
+    </div>
+  `;
+
+  /*
+   * Insert after the existing hero ticker, if available.
+   * Otherwise insert before the generator section.
+   * If neither exists, append to body.
+   */
+  const ticker = document.querySelector(".ticker");
+  const generator = document.querySelector(".generator-section");
+
+  if (ticker) {
+    ticker.insertAdjacentElement("afterend", section);
+  } else if (generator) {
+    generator.insertAdjacentElement("beforebegin", section);
+  } else {
+    document.body.appendChild(section);
+  }
+
+  const track = section.querySelector(".showcase-track");
+  const indicators = section.querySelector(".showcase-indicators");
+  const prevButton = section.querySelector(".showcase-prev");
+  const nextButton = section.querySelector(".showcase-next");
+  const countLabel = section.querySelector(".showcase-count");
+
+  /*
+   * Create cards.
+   */
+  OPPORTUNITIES.forEach((item, index) => {
+    const card = document.createElement("a");
+
+    card.className = "showcase-card";
+    card.href = item.url || "#";
+    card.target = item.url && item.url !== "#" ? "_blank" : "_self";
+    card.rel = "noopener noreferrer";
+    card.dataset.index = index;
+    card.dataset.accent = item.accent || "orange";
+    card.style.backgroundImage = `url("${item.image}")`;
+    card.setAttribute("aria-label", `${item.organisation}: ${item.title}`);
+
+    card.innerHTML = `
+      <div class="showcase-card-content">
+        <div class="showcase-card-top">
+          <h3 class="showcase-organisation">${item.organisation}</h3>
+          <span class="showcase-index">${String(index + 1).padStart(2, "0")}</span>
+        </div>
+        <span class="showcase-badge">${item.badge}</span>
+      </div>
+
+      <div class="showcase-card-footer">
+        <p class="showcase-card-title">${item.title}</p>
+        <span class="showcase-cta">
+          Explore opportunity
+          <span class="showcase-cta-arrow">↗</span>
+        </span>
+      </div>
+    `;
+
+    track.appendChild(card);
+
+    const dot = document.createElement("button");
+    dot.className = "showcase-dot";
+    dot.type = "button";
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-label", `Go to opportunity ${index + 1}`);
+    dot.dataset.index = index;
+
+    dot.addEventListener("click", () => {
+      scrollToIndex(index);
+    });
+
+    indicators.appendChild(dot);
+  });
+
+  const cards = [...track.querySelectorAll(".showcase-card")];
+  const dots = [...indicators.querySelectorAll(".showcase-dot")];
+
+  let currentIndex = 0;
+  let isPointerDown = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+
+  function getStep() {
+    if (!cards.length) return track.clientWidth;
+
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap || 0);
+
+    return cardWidth + gap;
+  }
+
+  function getVisibleCount() {
+    if (window.innerWidth <= 860) return 1;
+    return 2;
+  }
+
+  function getMaxIndex() {
+    return Math.max(0, cards.length - getVisibleCount());
+  }
+
+  function clampIndex(index) {
+    return Math.max(0, Math.min(index, getMaxIndex()));
+  }
+
+  function scrollToIndex(index, smooth = true) {
+    currentIndex = clampIndex(index);
+
+    track.scrollTo({
+      left: currentIndex * getStep(),
+      behavior: smooth ? "smooth" : "auto"
+    });
+
+    updateControls();
+  }
+
+  function updateControls() {
+    const maxIndex = getMaxIndex();
+
+    prevButton.disabled = currentIndex <= 0;
+    nextButton.disabled = currentIndex >= maxIndex;
+
+    /*
+     * With two cards visible, indicators represent each
+     * possible scroll position rather than every card.
+     */
+    dots.forEach((dot, index) => {
+      const active = index === currentIndex;
+      dot.classList.toggle("is-active", active);
+      dot.setAttribute("aria-selected", String(active));
+    });
+
+    countLabel.textContent =
+      `${String(Math.min(currentIndex + 1, cards.length)).padStart(2, "0")} / ${String(cards.length).padStart(2, "0")}`;
+  }
+
+  function detectCurrentIndex() {
+    const step = getStep();
+    if (!step) return;
+
+    currentIndex = clampIndex(Math.round(track.scrollLeft / step));
+    updateControls();
+  }
+
+  prevButton.addEventListener("click", () => {
+    scrollToIndex(currentIndex - 1);
+  });
+
+  nextButton.addEventListener("click", () => {
+    scrollToIndex(currentIndex + 1);
+  });
+
+  /*
+   * Update active dot while the user swipes or scrolls.
+   */
+  let scrollTimer;
+
+  track.addEventListener("scroll", () => {
+    window.clearTimeout(scrollTimer);
+    scrollTimer = window.setTimeout(detectCurrentIndex, 60);
+  }, { passive: true });
+
+  /*
+   * Keyboard support.
+   */
+  track.addEventListener("keydown", event => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      scrollToIndex(currentIndex + 1);
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      scrollToIndex(currentIndex - 1);
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      scrollToIndex(0);
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      scrollToIndex(getMaxIndex());
+    }
+  });
+
+/*
+ * Desktop click-and-drag support.
+ * Prevents accidental navigation only when the user actually drags.
+ */
+/*
+ * Desktop click-and-drag support.
+ * Allows normal left-click navigation.
+ * Cancels navigation only after an actual drag.
+ */
+let hasDragged = false;
+
+track.addEventListener("pointerdown", event => {
+  if (event.pointerType !== "mouse") return;
+  if (event.button !== 0) return;
+
+  isPointerDown = true;
+  hasDragged = false;
+  startX = event.clientX;
+  startScrollLeft = track.scrollLeft;
+
+  track.classList.add("is-dragging");
+  track.setPointerCapture(event.pointerId);
+});
+
+track.addEventListener("pointermove", event => {
+  if (!isPointerDown) return;
+
+  const distance = event.clientX - startX;
+
+  if (Math.abs(distance) > 6) {
+    hasDragged = true;
+  }
+
+  if (hasDragged) {
+    track.scrollLeft = startScrollLeft - distance;
+  }
+});
+
+track.addEventListener("pointerup", event => {
+  if (!isPointerDown) return;
+
+  isPointerDown = false;
+  track.classList.remove("is-dragging");
+
+  if (track.hasPointerCapture(event.pointerId)) {
+    track.releasePointerCapture(event.pointerId);
+  }
+
+  /*
+   * If the pointer moved, suppress only this drag-release click.
+   * A normal click remains unaffected.
+   */
+  if (hasDragged) {
+    const cancelClick = clickEvent => {
+      clickEvent.preventDefault();
+      clickEvent.stopImmediatePropagation();
+      track.removeEventListener("click", cancelClick, true);
+    };
+
+    track.addEventListener("click", cancelClick, true);
+
+    setTimeout(() => {
+      track.removeEventListener("click", cancelClick, true);
+    }, 0);
+  }
+
+  hasDragged = false;
+});
+
+track.addEventListener("pointercancel", event => {
+  isPointerDown = false;
+  hasDragged = false;
+  track.classList.remove("is-dragging");
+
+  if (track.hasPointerCapture(event.pointerId)) {
+    track.releasePointerCapture(event.pointerId);
+  }
+});
+  /*
+   * Keep the active position correct after resize.
+   */
+  let resizeTimer;
+
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimer);
+
+    resizeTimer = window.setTimeout(() => {
+      currentIndex = clampIndex(currentIndex);
+      scrollToIndex(currentIndex, false);
+    }, 120);
+  });
+
+  /*
+   * Initial state.
+   */
+  updateControls();
+
+})();
+</script>
