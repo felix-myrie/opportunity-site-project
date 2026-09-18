@@ -1,8 +1,5 @@
-name = "opportunity-submissions"
-main = "worker.js"
-compatibility_date = "2026-09-17"
+name = "opportunity-site-project"
+compatibility_date = "2026-09-18"
 
-[vars]
-EMAIL_FROM = "Northstar <submissions@your-verified-domain.example>"
-EMAIL_TO = "you@example.com"
-ALLOWED_ORIGIN = "https://your-site.example"
+[assets]
+directory = "."
