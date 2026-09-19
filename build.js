@@ -117,6 +117,7 @@ async function main() {
   }
 
   const opportunities = parseCsv(csvContent);
+  
   console.log(`Parsed ${opportunities.length} opportunities from ${sourceLabel}.`);
 
   // Initial sort: soonest deadline (matches default UI dropdown)
